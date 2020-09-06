@@ -9,8 +9,13 @@ import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 //import firebase from 'firebase';
 
 const MessageSender = () => {
+  const [input, setInput] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setInput("");
+    setImageUrl("");
   };
 
   return (
@@ -19,13 +24,22 @@ const MessageSender = () => {
         <Avatar />
         <form>
           <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             type="text"
-            className="massageSender__input"
+            className="messageSender__input"
             placeholder={"What's on your mind"}
           />
-          <input type="text" placeholder="image URL {Optional}" />
+          <input
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            type="text"
+            placeholder="image URL {Optional}"
+          />
 
-          <button onClick={handleSubmit} type="submit"></button>
+          <button onClick={handleSubmit} type="submit">
+            Hidden Submit
+          </button>
         </form>
       </div>
 
